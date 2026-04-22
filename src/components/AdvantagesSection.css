@@ -1,0 +1,156 @@
+.advantages-section {
+  background: #1e293b;
+  color: #fff;
+  padding: 2.5rem 1.5rem 3rem;
+  text-align: center;
+  overflow: visible;
+}
+
+.advantages-section__title {
+  margin: 0 0 0.5rem;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.advantages-section__subtitle {
+  margin: 0 0 2rem;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.advantages-section__content {
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+@media (max-width: 768px) {
+  .advantages-section__content {
+    flex-direction: column;
+    min-height: 0;
+    gap: 10rem;
+  }
+}
+
+.advantages-section__card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: left;
+  width: 100%;
+  max-width: 260px;
+}
+
+.advantages-section__card--1 {
+  position: absolute;
+  top: -1rem;
+  left: -1rem;
+}
+.advantages-section__card--2 {
+  position: absolute;
+  bottom: -1rem;
+  left: -1rem;
+}
+.advantages-section__card--3 {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+}
+.advantages-section__card--4 {
+  position: absolute;
+  bottom: -1rem;
+  right: -1rem;
+}
+
+@media (max-width: 768px) {
+  .advantages-section__card--1,
+  .advantages-section__card--2,
+  .advantages-section__card--3,
+  .advantages-section__card--4 {
+    position: static;
+    max-width: 100%;
+  }
+}
+
+.advantages-section__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #14b8a6;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.9rem;
+  border-radius: 50%;
+  margin-bottom: 0.75rem;
+}
+
+.advantages-section__card-title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.advantages-section__card-text {
+  margin: 0;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+
+/* Ortadaki telefon - ekranda ygntech */
+.advantages-section__phone {
+  position: relative;
+  z-index: 2;
+  width: 140px;
+  height: 260px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .advantages-section__phone {
+    margin: 1rem 0;
+  }
+}
+
+.advantages-section__phone::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #334155 0%, #1e293b 100%);
+  border-radius: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.advantages-section__phone-screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 116px;
+  height: 208px;
+  background: #fff;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 0 1px #cbd5e1;
+}
+
+.advantages-section__phone-brand {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0e1929;
+  letter-spacing: 0.05em;
+}

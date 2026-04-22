@@ -1,0 +1,32 @@
+/* Sabit WhatsApp butonu - sağ alt */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.5);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.whatsapp-btn:hover {
+  color: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.55);
+}
+
+.whatsapp-btn:active {
+  transform: scale(0.98);
+}
+
+.whatsapp-btn__icon {
+  width: 30px;
+  height: 30px;
+}
