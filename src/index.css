@@ -47,17 +47,19 @@ body {
 .page-section h1,
 .page-section h2 {
   margin-top: 0;
-  color: var(--foreground);
+  color: var(--lux-text);
+  font-family: var(--lux-font-heading);
 }
 
 .page-section__title {
   margin: 0 0 1.25rem;
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--foreground);
+  color: var(--lux-text);
+  font-family: var(--lux-font-heading);
   letter-spacing: -0.02em;
   padding-bottom: 0.75rem;
-  border-bottom: 3px solid var(--color-primary);
+  border-bottom: 2px solid rgba(200, 169, 106, 0.55);
   display: inline-block;
 }
 
@@ -86,7 +88,7 @@ body {
 .page-section__intro {
   max-width: 72ch;
   margin: 0 0 2rem;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.72);
   font-size: 1.0625rem;
 }
 
@@ -101,14 +103,15 @@ body {
   margin: 0 0 0.75rem;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1e293b;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: var(--lux-font-heading);
   line-height: 1.35;
 }
 
 .hizmetler-hero__text {
   margin: 0;
   font-size: 1.0625rem;
-  color: #475569;
+  color: rgba(255, 255, 255, 0.72);
   line-height: 1.5;
 }
 

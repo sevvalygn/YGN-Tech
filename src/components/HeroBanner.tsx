@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 export default function HeroBanner() {
   return (
@@ -9,13 +9,17 @@ export default function HeroBanner() {
         src="/hero.png"
         alt="YGNTECH Teknik Servis"
         onError={(e) => {
-          const img = e.currentTarget
-          img.style.display = 'none'
-          img.nextElementSibling?.classList.add('is-visible')
+          const img = e.currentTarget;
+          img.style.display = "none";
+          img.nextElementSibling?.classList.add(
+            "is-visible",
+          );
         }}
       />
-      <div className="hero-banner__placeholder" aria-hidden="true" />
+      <div
+        className="hero-banner__placeholder"
+        aria-hidden="true"
+      />
     </section>
-  )
+  );
 }
-

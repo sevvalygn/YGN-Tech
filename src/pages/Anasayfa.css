@@ -3,8 +3,8 @@
   display: block !important;
   width: 100%;
   text-align: center;
-  font-family: 'Poppins', system-ui, sans-serif !important;
-  font-weight: 700 !important;
+  font-family: var(--lux-font-heading) !important;
+  font-weight: 600 !important;
   font-size: clamp(1.75rem, 4vw, 2.25rem) !important;
   letter-spacing: -0.02em;
   margin-bottom: 0.5rem !important;
@@ -15,7 +15,8 @@
   max-width: 42rem;
   margin-left: auto;
   margin-right: auto;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.72);
+  margin-top: 0.75rem;
 }
 
 /* Anasayfa butonları */
@@ -23,7 +24,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.25rem;
-  margin-top: 2.5rem;
+  margin-top: 3rem;
 }
 
 .anasayfa__btn {
@@ -32,22 +33,31 @@
   justify-content: center;
   gap: 0.85rem;
   padding: 1.25rem 1.5rem;
-  background: #2563eb;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  font-weight: 600;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-weight: 700;
   font-size: 1.0625rem;
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
-  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.35);
+  transition: background 0.2s, transform 0.15s, border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .anasayfa__btn:hover {
-  background: #1d4ed8;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(200, 169, 106, 0.45);
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 5px 14px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.3);
+}
+
+.anasayfa__btn:focus-visible {
+  outline: none;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.3), 0 0 0 3px rgba(200, 169, 106, 0.28);
+  border-color: rgba(200, 169, 106, 0.65);
 }
 
 .anasayfa__btn:active {
@@ -60,14 +70,14 @@
 
 /* Modaller */
 .anasayfa-modal .modal-header {
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 1rem 1.25rem;
 }
 
 .anasayfa-modal .modal-title {
   font-weight: 700;
   font-size: 1.1rem;
-  color: #111827;
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .anasayfa-modal .modal-body {
@@ -75,24 +85,56 @@
 }
 
 .anasayfa-modal__subtitle {
-  color: #4b5563;
+  color: rgba(255, 255, 255, 0.72);
   font-size: 0.9375rem;
   margin-bottom: 1.25rem;
 }
 
 .anasayfa-modal .form-label {
   font-weight: 500;
-  color: #374151;
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .anasayfa-modal__submit {
-  background: #2563eb !important;
-  border: none !important;
-  font-weight: 600 !important;
+  background: var(--lux-accent) !important;
+  border: 1px solid transparent !important;
+  color: var(--lux-bg) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.14em;
   padding: 0.85rem 1.25rem !important;
   margin-top: 0.5rem;
 }
 
 .anasayfa-modal__submit:hover {
-  background: #1d4ed8 !important;
+  background: var(--lux-accent-light) !important;
+}
+
+.anasayfa-modal .modal-content {
+  background: rgba(11, 15, 26, 0.92);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.anasayfa-modal .btn-close {
+  filter: invert(1);
+}
+
+.anasayfa-modal .form-control,
+.anasayfa-modal .form-select {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.anasayfa-modal .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.anasayfa-modal .form-control:focus,
+.anasayfa-modal .form-select:focus {
+  border-color: rgba(200, 169, 106, 0.7);
+  box-shadow: 0 0 0 0.2rem rgba(200, 169, 106, 0.18);
 }

@@ -1,9 +1,8 @@
 "use client"
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Navbar as BSNavbar, Nav, Container, Button, Form } from 'react-bootstrap'
 
 type NavItem = { path: string; label: string }
 
@@ -16,8 +15,28 @@ const navItems: NavItem[] = [
   { path: '/iletisim', label: 'İletişim' },
 ]
 
+function MenuIcon({ open }: { open: boolean }) {
+  if (open) {
+    return (
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden focusable="false">
+        <path
+          fill="currentColor"
+          d="M18.3 5.7a1 1 0 0 1 0 1.4L13.4 12l4.9 4.9a1 1 0 1 1-1.4 1.4L12 13.4l-4.9 4.9a1 1 0 1 1-1.4-1.4l4.9-4.9-4.9-4.9a1 1 0 0 1 1.4-1.4l4.9 4.9 4.9-4.9a1 1 0 0 1 1.4 0Z"
+        />
+      </svg>
+    )
+  }
+
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden focusable="false">
+      <path fill="currentColor" d="M4 7a1 1 0 1 1 0-2h16a1 1 0 1 1 0 2H4Zm0 6a1 1 0 1 1 0-2h16a1 1 0 1 1 0 2H4Zm0 6a1 1 0 1 1 0-2h16a1 1 0 1 1 0 2H4Z" />
+    </svg>
+  )
+}
+
 export default function Navbar() {
-  const [searchQuery, setSearchQuery] = useState('')
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname() || '/'
 
   const activeKey = useMemo(() => {
@@ -25,51 +44,70 @@ export default function Navbar() {
     return match?.path ?? pathname
   }, [pathname])
 
-  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    if (searchQuery.trim()) {
-      // eslint-disable-next-line no-console
-      console.log('Arama:', searchQuery)
-    }
-  }
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60)
+    onScroll()
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [pathname])
 
   return (
-    <BSNavbar expand="lg" className="navbar-custom">
-      <Container fluid>
-        <BSNavbar.Brand as={Link} href="/">
-          YGN Tech
-        </BSNavbar.Brand>
-        <BSNavbar.Toggle aria-controls="navbarSupportedContent" aria-label="Menüyü aç/kapat" />
-        <BSNavbar.Collapse
-          id="navbarSupportedContent"
-          className="d-flex flex-column flex-lg-row justify-content-lg-between align-items-center w-100"
-        >
-          <Nav
-            className="d-flex flex-column flex-lg-row justify-content-center align-items-center flex-grow-1 gap-2 gap-lg-3 mb-2 mb-lg-0"
-            activeKey={activeKey}
-          >
+    <nav className={`lux-navbar ${scrolled ? 'lux-glass lux-navbar--scrolled' : ''}`}>
+      <div className="lux-container">
+        <div className="lux-navbar__inner">
+          <Link href="/" className="lux-brand">
+            <span className="lux-brand__mark" aria-hidden>
+              <span className="lux-brand__mark-letter">Y</span>
+            </span>
+            <span>
+              <span className="lux-brand__title">YGN Tech</span>
+              <span className="lux-brand__subtitle">Teknik Servis</span>
+            </span>
+          </Link>
+
+          <div className="lux-nav-desktop" aria-label="Ana menü">
             {navItems.map(({ path, label }) => (
-              <Nav.Link key={path} as={Link} href={path} eventKey={path} className="px-2 px-lg-3 py-1">
+              <Link key={path} href={path} className="lux-nav-link" aria-current={activeKey === path ? 'page' : undefined}>
                 {label}
-              </Nav.Link>
+              </Link>
             ))}
-          </Nav>
-          <Form className="d-flex ms-lg-2" role="search" onSubmit={handleSearch}>
-            <Form.Control
-              type="search"
-              placeholder="Ara..."
-              aria-label="Ara"
-              className="me-2"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.currentTarget.value)}
-            />
-            <Button variant="outline-success" type="submit">
-              Ara
-            </Button>
-          </Form>
-        </BSNavbar.Collapse>
-      </Container>
-    </BSNavbar>
+          </div>
+
+          <div className="lux-nav-cta">
+            <Link href="/iletisim" className="lux-btn-gold-filled">
+              İletişim
+            </Link>
+          </div>
+
+          <button
+            type="button"
+            className="lux-nav-mobile-toggle"
+            aria-label={menuOpen ? 'Menüyü kapat' : 'Menüyü aç'}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            <MenuIcon open={menuOpen} />
+          </button>
+        </div>
+
+        {menuOpen && (
+          <div className="lux-mobile-panel" aria-label="Mobil menü">
+            {navItems.map(({ path, label }) => (
+              <Link key={path} href={path} className="lux-nav-link" aria-current={activeKey === path ? 'page' : undefined}>
+                {label}
+              </Link>
+            ))}
+            <Link href="/iletisim" className="lux-btn-gold-filled">
+              İletişim
+            </Link>
+          </div>
+        )}
+      </div>
+    </nav>
   )
 }
 
